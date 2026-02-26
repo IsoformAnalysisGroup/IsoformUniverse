@@ -35,7 +35,7 @@
   ),
   repo = c(
     NA_character_,
-    "kvittingsekse/IsoformSwitchAnalyzeR"
+    "kvittingseerup/IsoformSwitchAnalyzeR"
   ),
   stringsAsFactors = FALSE
 )
