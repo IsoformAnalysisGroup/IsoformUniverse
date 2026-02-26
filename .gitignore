@@ -1,0 +1,15 @@
+# R build artifacts
+*.Rproj.user
+*.Rhistory
+*.RData
+*.Ruserdata
+
+# Generated documentation (if using pkgdown)
+docs/
+
+# Build output
+*.tar.gz
+*.zip
+
+# devtools / roxygen2 cache
+/.Rd2pdf*
