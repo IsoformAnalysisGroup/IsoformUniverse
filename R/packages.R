@@ -33,12 +33,12 @@
     "IsoformSwitchAnalyzeR"
   ),
   source = c(
-    "GitHub",
-    "Bioconductor"
+    "Bioconductor",
+    "GitHub"
   ),
   repo = c(
-    "shdam/pairedGSEA",
-    NA_character_
+    NA_character_,
+    "kvittingseerup/IsoformSwitchAnalyzeR"
   ),
   deps = I(list(
     data.frame(
