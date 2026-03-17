@@ -51,11 +51,11 @@ test_that("isoformUniverse_update() reports when no updates are needed", {
     .package = "IsoformUniverse"
   )
   local_mocked_bindings(
-    cli_h1 = function(...) NULL,
-    cli_alert_info = function(msg, ...) msgs <<- c(msgs, msg),
-    cli_alert_success = function(msg, ...) msgs <<- c(msgs, msg),
-    cli_alert_warning = function(msg, ...) msgs <<- c(msgs, msg),
-    .env = asNamespace("cli")
+    .cli_h1 = function(...) NULL,
+    .cli_alert_info = function(msg, ...) msgs <<- c(msgs, msg),
+    .cli_alert_success = function(msg, ...) msgs <<- c(msgs, msg),
+    .cli_alert_warning = function(msg, ...) msgs <<- c(msgs, msg),
+    .package = "IsoformUniverse"
   )
 
   isoformUniverse_update()
@@ -81,11 +81,11 @@ test_that("isoformUniverse_update() reports completion when at least one update 
     .package = "IsoformUniverse"
   )
   local_mocked_bindings(
-    cli_h1 = function(...) NULL,
-    cli_alert_info = function(msg, ...) msgs <<- c(msgs, msg),
-    cli_alert_success = function(msg, ...) msgs <<- c(msgs, msg),
-    cli_alert_warning = function(msg, ...) msgs <<- c(msgs, msg),
-    .env = asNamespace("cli")
+    .cli_h1 = function(...) NULL,
+    .cli_alert_info = function(msg, ...) msgs <<- c(msgs, msg),
+    .cli_alert_success = function(msg, ...) msgs <<- c(msgs, msg),
+    .cli_alert_warning = function(msg, ...) msgs <<- c(msgs, msg),
+    .package = "IsoformUniverse"
   )
 
   isoformUniverse_update()

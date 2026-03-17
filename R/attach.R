@@ -30,20 +30,20 @@
     }, character(1))
     bullets <- paste0(ok, " ", versions)
     names(bullets) <- rep("v", length(bullets))
-    cli::cli_h1("IsoformUniverse")
-    cli::cli_bullets(bullets)
+    .cli_h1("IsoformUniverse")
+    .cli_bullets(bullets)
   }
 
   if (length(bad) > 0) {
     not_installed <- bad[!vapply(bad, .is_installed, logical(1))]
     if (length(not_installed) > 0) {
-      cli::cli_alert_warning(
+      .cli_alert_warning(
         "The following package{?s} {?is/are} not installed and could not be \\
          loaded: {.pkg {not_installed}}.  \\
          Run {.code isoformUniverse_install()} to install them."
       )
     } else {
-      cli::cli_alert_danger(
+      .cli_alert_danger(
         "Failed to load: {.pkg {bad}}"
       )
     }
