@@ -21,13 +21,11 @@ of updating packages.
 Updates all packages listed in \code{\link[=isoformUniverse_packages]{isoformUniverse_packages()}} to their latest
 versions. Unlike \code{\link[=isoformUniverse_install]{isoformUniverse_install()}}, this function also updates
 packages that are already installed.
-}
-\details{
 \itemize{
 \item \strong{Bioconductor} packages are updated via
-\link[BiocManager:install]{BiocManager::install()}.
+\code{\link[BiocManager:install]{BiocManager::install()}}.
 \item \strong{GitHub} packages are updated via
-\link[remotes:install_github]{remotes::install_github()} with
+\code{\link[remotes:install_github]{remotes::install_github()}} with
 \code{upgrade = "always"}.
 }
 }

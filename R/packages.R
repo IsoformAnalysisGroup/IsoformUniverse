@@ -30,18 +30,15 @@
 .isoformverse_pkgs <- data.frame(
   package = c(
     "pairedGSEA",
-    "IsoformSwitchAnalyzeR",
-    "BioPred"
+    "IsoformSwitchAnalyzeR"
   ),
   source = c(
     "Bioconductor",
-    "GitHub",
     "GitHub"
   ),
   repo = c(
     NA_character_,
-    "kvittingseerup/IsoformSwitchAnalyzeR",
-    "deeplearner0731/BioPred"
+    "kvittingseerup/IsoformSwitchAnalyzeR"
   ),
   deps = I(list(
     data.frame(
@@ -62,21 +59,6 @@
       package = "pfamAnalyzeR",
       source = "GitHub",
       repo = "kvittingseerup/pfamAnalyzeR",
-      stringsAsFactors = FALSE
-    ),
-    data.frame(
-      package=c("ggplot2",
-                "PropCIs",
-                "xgboost",
-                "pROC",
-                "survival",
-                "mgcv",
-                "survminer",
-                "onewaytests",
-                "car"
-                ),
-      source= rep("Bioconductor", 9),
-      repo=rep(NA_character_, 9),
       stringsAsFactors = FALSE
     )
   )),
