@@ -7,7 +7,7 @@
   }
 
   if (!auto_install) {
-    cli::cli_alert_danger(
+    .cli_alert_danger(
       "Package {.pkg {pkg}} is required for this operation but is not \
        installed. Install it from CRAN with \
        {.code install.packages(\"{pkg}\")}."
@@ -17,7 +17,7 @@
     )
   }
 
-  cli::cli_alert_info(
+  .cli_alert_info(
     "Package {.pkg {pkg}} is required and will be installed from CRAN ..."
   )
   utils::install.packages(pkg)
@@ -45,7 +45,7 @@
     return(invisible(TRUE))
   }
 
-  cli::cli_alert_info("Installing dependency {.pkg {dep_pkg}} ({.val {dep_source}}) ...")
+  .cli_alert_info("Installing dependency {.pkg {dep_pkg}} ({.val {dep_source}}) ...")
 
   if (dep_source == "Bioconductor") {
     .ensure_helper("BiocManager", auto_install = auto_install_helpers)
@@ -54,14 +54,14 @@
     .ensure_helper("remotes", auto_install = auto_install_helpers)
     remotes::install_github(dep_repo, upgrade = "never", ...)
   } else {
-    cli::cli_alert_warning(
+    .cli_alert_warning(
       "Unknown dependency source {.val {dep_source}} for {.pkg {dep_pkg}}; skipping."
     )
     return(invisible(FALSE))
   }
 
   if (!.is_installed(dep_pkg)) {
-    cli::cli_alert_warning(
+    .cli_alert_warning(
       "Dependency {.pkg {dep_pkg}} could not be installed successfully."
     )
     return(invisible(FALSE))
@@ -85,25 +85,25 @@
 
   if (source == "Bioconductor") {
     .ensure_helper("BiocManager", auto_install = auto_install_helpers)
-    cli::cli_alert_info("Installing {.pkg {pkg}} from Bioconductor ...")
+    .cli_alert_info("Installing {.pkg {pkg}} from Bioconductor ...")
     BiocManager::install(pkg, update = FALSE, ask = FALSE, ...)
   } else if (source == "GitHub") {
     .ensure_helper("remotes", auto_install = auto_install_helpers)
-    cli::cli_alert_info("Installing {.pkg {pkg}} from GitHub ({.val {repo}}) ...")
+    .cli_alert_info("Installing {.pkg {pkg}} from GitHub ({.val {repo}}) ...")
     remotes::install_github(repo, upgrade = "never", ...)
   } else {
-    cli::cli_alert_warning("Unknown source {.val {source}} for {.pkg {pkg}}; skipping.")
+    .cli_alert_warning("Unknown source {.val {source}} for {.pkg {pkg}}; skipping.")
     return(invisible(FALSE))
   }
 
   if (!.is_installed(pkg)) {
-    cli::cli_alert_danger(
+    .cli_alert_danger(
       "Package {.pkg {pkg}} did not install correctly. Please check installation logs above."
     )
     return(invisible(FALSE))
   }
 
-  cli::cli_alert_success("Installed {.pkg {pkg}}.")
+  .cli_alert_success("Installed {.pkg {pkg}}.")
   invisible(TRUE)
 }
 
@@ -120,19 +120,19 @@
 
   if (source == "Bioconductor") {
     .ensure_helper("BiocManager", auto_install = auto_install_helpers)
-    cli::cli_alert_info("Updating {.pkg {pkg}} from Bioconductor ...")
+    .cli_alert_info("Updating {.pkg {pkg}} from Bioconductor ...")
     BiocManager::install(pkg, update = TRUE, ask = FALSE, ...)
   } else if (source == "GitHub") {
     .ensure_helper("remotes", auto_install = auto_install_helpers)
-    cli::cli_alert_info("Updating {.pkg {pkg}} from GitHub ({.val {repo}}) ...")
+    .cli_alert_info("Updating {.pkg {pkg}} from GitHub ({.val {repo}}) ...")
     remotes::install_github(repo, upgrade = "always", ...)
   } else {
-    cli::cli_alert_warning("Unknown source {.val {source}} for {.pkg {pkg}}; skipping.")
+    .cli_alert_warning("Unknown source {.val {source}} for {.pkg {pkg}}; skipping.")
     return(invisible(NA))
   }
 
   if (!.is_installed(pkg)) {
-    cli::cli_alert_danger(
+    .cli_alert_danger(
       "Package {.pkg {pkg}} is still not installed after update attempt."
     )
     return(invisible(NA))
@@ -142,9 +142,9 @@
   updated <- is.na(old_version) || !identical(old_version, new_version)
 
   if (updated) {
-    cli::cli_alert_success("Updated {.pkg {pkg}} ({old_version} -> {new_version}).")
+    .cli_alert_success("Updated {.pkg {pkg}} ({old_version} -> {new_version}).")
   } else {
-    cli::cli_alert_info("{.pkg {pkg}} is already up to date ({new_version}).")
+    .cli_alert_info("{.pkg {pkg}} is already up to date ({new_version}).")
   }
 
   invisible(updated)
@@ -185,11 +185,11 @@ isoformUniverse_install <- function(..., auto_install_helpers = TRUE) {
   to_install <- pkgs[missing_mask, , drop = FALSE]
 
   if (nrow(to_install) == 0) {
-    cli::cli_alert_success("All IsoformUniverse packages are already installed.")
+    .cli_alert_success("All IsoformUniverse packages are already installed.")
     return(invisible(NULL))
   }
 
-  cli::cli_h1("Installing IsoformUniverse packages")
+  .cli_h1("Installing IsoformUniverse packages")
   results <- vapply(
     seq_len(nrow(to_install)),
     function(i) {
@@ -200,11 +200,11 @@ isoformUniverse_install <- function(..., auto_install_helpers = TRUE) {
 
   failed <- to_install$package[!results]
   if (length(failed) > 0) {
-    cli::cli_alert_warning(
+    .cli_alert_warning(
       "Installation finished with failures for: {.pkg {failed}}"
     )
   } else {
-    cli::cli_alert_success("Installation complete.")
+    .cli_alert_success("Installation complete.")
   }
 
   invisible(NULL)
@@ -237,7 +237,7 @@ isoformUniverse_install <- function(..., auto_install_helpers = TRUE) {
 isoformUniverse_update <- function(..., auto_install_helpers = TRUE) {
   pkgs <- isoformUniverse_packages()
 
-  cli::cli_h1("Updating IsoformUniverse packages")
+  .cli_h1("Updating IsoformUniverse packages")
   results <- vapply(
     seq_len(nrow(pkgs)),
     function(i) {
@@ -250,13 +250,13 @@ isoformUniverse_update <- function(..., auto_install_helpers = TRUE) {
   any_updated <- any(results, na.rm = TRUE)
 
   if (length(failed) > 0) {
-    cli::cli_alert_warning(
+    .cli_alert_warning(
       "Update finished with failures for: {.pkg {failed}}"
     )
   } else if (any_updated) {
-    cli::cli_alert_success("Update complete.")
+    .cli_alert_success("Update complete.")
   } else {
-    cli::cli_alert_info("Packages are up to date; no update carried out.")
+    .cli_alert_info("Packages are up to date; no update carried out.")
   }
 
   invisible(NULL)

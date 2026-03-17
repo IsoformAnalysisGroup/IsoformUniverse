@@ -120,6 +120,11 @@ a new package:
    devtools::document()
    ```
 
+   This refreshes `man/*.Rd` and `NAMESPACE`. The package keeps `NAMESPACE`
+   imports via package-level roxygen tags in `R/IsoformUniverse-package.R`, so
+   if imports change, update those tags rather than editing `NAMESPACE`
+   manually.
+
 3. **Add a `NEWS.md` entry** describing the new package.
 
 4. **Open a pull request** against `main`.
