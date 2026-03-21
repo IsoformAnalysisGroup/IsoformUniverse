@@ -12,6 +12,7 @@ Bioconductor and GitHub.
 ---
 
 ## Packages included
+Currently IsoformUniverse only contains two packages many additional packages are currently being developed by the Isoform Analysis Group and collaborators. The vision is a universe of interconnected packages that allows extensive isoform analysis.
 
 | Package | Source | Description |
 |---------|--------|-------------|
@@ -26,7 +27,7 @@ Bioconductor and GitHub.
 
 ```r
 # Install from GitHub
-remotes::install_github("elena-iri/IsoformUniverse")
+remotes::install_github("IsoformAnalysisGroup/IsoformUniverse")
 ```
 
 ### Install all member packages
